@@ -21,7 +21,7 @@ function renderTransactions() {
   expenseList.innerHTML = ''
 
   for (const transactionObject of transactions) {
-    const transactionCard = makeTransaction(generatedID, inputTitle, inputAmount, inputDate,)  //transactionCard => element container yg memuat 1 transaksi
+    const transactionCard = makeTransaction(transactionObject)  //transactionCard => element container yg memuat 1 transaksi
     if (transactionObject.type === 'income') {
       incomeList.append(transactionCard)
     }
@@ -50,10 +50,10 @@ function makeTransaction(transactionObject) {
   itemDate.setAttribute('data-testid', `transactionItemDate`)
   itemDate.classList.add('tracker-transaction-item__date')
 
-  const itemType = document.createElement('p')
+  /* const itemType = document.createElement('p')
   itemType.innerText = `Tipe: ${type}`
   itemType.setAttribute('data-testid', `transactionItemType`)
-  itemType.classList.add('tracker-transaction-item__')  //.....
+  itemType.classList.add('tracker-transaction-item__') */  //.....
 
 
   const changeButton = document.createElement('button')
