@@ -50,10 +50,10 @@ function makeTransaction(transactionObject) {
   itemDate.setAttribute('data-testid', `transactionItemDate`)
   itemDate.classList.add('tracker-transaction-item__date')
 
-  /* const itemType = document.createElement('p')
+  const itemType = document.createElement('p')
   itemType.innerText = `Tipe: ${type}`
   itemType.setAttribute('data-testid', `transactionItemType`)
-  itemType.classList.add('tracker-transaction-item__') */  //.....
+  itemType.classList.add('tracker-transaction-item__')  //.....
 
 
   const changeButton = document.createElement('button')
@@ -85,7 +85,7 @@ function makeTransaction(transactionObject) {
   const transactionCard = document.createElement('div')
   transactionCard.setAttribute('data-testid', 'transactionItem')
   transactionCard.classList.add('tracker-transaction-item')
-  transactionCard.append(itemTitle, itemAmount, itemDate, itemType, containerButton)
+  transactionCard.append(itemTitle, itemAmount, itemDate, /* itemType ,*/ containerButton)
 
   if (type === 'income') {
     itemAmount.classList.add('tracker-transaction-item__amount--income')
