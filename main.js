@@ -21,7 +21,7 @@ function renderTransactions() {
   expenseList.innerHTML = ''
 
   for (const transactionObject of transactions) {
-    const transactionCard = makeTransaction(transactionObject)  //transactionCard => element container yg memuat 1 transaksi
+    const transactionCard = makeTransaction(generatedID, inputTitle, inputAmount, inputDate,)  //transactionCard => element container yg memuat 1 transaksi
     if (transactionObject.type === 'income') {
       incomeList.append(transactionCard)
     }
