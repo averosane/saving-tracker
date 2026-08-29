@@ -215,20 +215,6 @@ function findTransactionIndex(transactionID) {
   }
   return -1;
 }
-
-function AmountIncome(param) {
-  const transactionTarget = findTransaction(transactionID)
-if (transactionTarget == null) return;
-
-if (transactionTarget.type === 'income') { // ...nanti tambahkan find
-  transactionTarget.type = 'expense'
-}
-else if (transactionTarget.type === 'expense') {
-  transactionTarget.type = 'income'
-}
-saveData();
-}
-
 //FUNGSI searchTransaction(title) {}
 /**
  * function setSummaryTransaction() {
@@ -244,7 +230,12 @@ saveData();
  */
 
 
-
+function amountIncome(transactionID) {
+  const cardTarget = findTransactionIndex(transactionID);
+  if()
+  saveData();
+  renderTransactions()
+}
 
 
 
