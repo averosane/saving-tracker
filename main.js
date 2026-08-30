@@ -171,6 +171,7 @@ function changeTransaction(transactionID) {
     transactionTarget.type = 'income'
   }
   saveData();
+  renderTransactions()
 }
 
 // FUNGSI Edit Transaksi, menampilkan objek ke input
@@ -190,10 +191,8 @@ function editTransaction(transactionID) {
   showAmount.value = amount
   showDate.value = date
   showType.value = type
-  //__
 
   renderTransactions()
-
 }
 
 //FUNGSI
@@ -215,9 +214,10 @@ function findTransactionIndex(transactionID) {
   }
   return -1;
 }
-//FUNGSI searchTransaction(title) {}
-/**
- * function setSummaryTransaction() {
+
+
+//FUNGSI search Transaction(title) {}
+function setSummaryTransaction() {
   const totalHarga = transactions.reduce((total, item) => total + item.amount, 0);
   const balanceState = document.getElementById('balance-amount')
   balanceState.innerText = totalHarga
@@ -227,12 +227,19 @@ function findTransactionIndex(transactionID) {
   const expenseState = document.getElementById('balance-amount-expense')
 
 }
- */
 
 
+/*
 function amountIncome(transactionID) {
-  const cardTarget = findTransactionIndex(transactionID);
-  if()
+  const transactionTarget = findTransaction(transactionID)
+  if (transactionTarget == null) return;
+
+  if (transactionTarget.type === 'income') {
+
+  }
+  else if (transactionTarget.type === 'expense') {
+
+  }
   saveData();
   renderTransactions()
 }
