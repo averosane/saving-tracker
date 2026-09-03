@@ -21,8 +21,15 @@ function renderTransactions() {
     else if (transactionObject.type === 'expense') {
       expenseList.append(transactionCard)
     }
+
+    //let incomeElement = getElementById('balance-amount-income')
+    //incomeElement.innerText = incomeSummary()
   }
 
+}
+
+function incomeSummary() {
+  return transactions.reduce((acc, obj) => acc + obj.price, 0);
 }
 
 function makeTransaction(transactionObject) {
