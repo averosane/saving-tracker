@@ -64,7 +64,7 @@ function makeTransaction(transactionObject) {
   })
 
   const editButton = document.createElement('button')
-  editButton.classList.add('tracker-transaction-item__icon')
+  editButton.classList.add('tracker-transaction-item__icon', 'tracker-transaction-item__edit-button')
   editButton.innerText = 'Edit'
   editButton.addEventListener('click', function () {
     editTransaction(id)
