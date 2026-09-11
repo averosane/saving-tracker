@@ -8,105 +8,105 @@
 </head>
 <body>
 
-  <div class="tracker-app">
+  <div class="app">
 
-    <header class="tracker-header">
-      <h1 class="tracker-header__title">Tracker<span style="color:var(--accent-blue)">.io</span></h1>
-      <div class="tracker-header__user">
-        <div class="tracker-header__user-info">
-          <span class="tracker-header__greeting">Halo, <strong>User</strong></span>
-          <span class="tracker-header__date">Bulan Ini</span>
+    <header class="header">
+      <h1 class="header-title">Tracker<span style="color:var(--accent-blue)">.io</span></h1>
+      <div class="header-user">
+        <div class="header-user-info">
+          <span class="header-greeting">Halo, <strong>User</strong></span>
+          <span class="header-date">Bulan Ini</span>
         </div>
-        <div class="tracker-header__avatar" role="img" aria-label="Avatar Pengguna" aria-hidden="true">👤</div>
+        <div class="header-avatar" role="img" aria-label="Avatar Pengguna" aria-hidden="true">👤</div>
       </div>
     </header>
 
     <main>
       <!--TRACKER SUMMARY-->
-      <section class="tracker-summary" aria-labelledby="summary-heading">
+      <section class="summary" aria-labelledby="summary-heading">
         <h2 id="summary-heading" class="visually-hidden">Ringkasan Keuangan</h2>
         
         <!--=========Currently edit  ==========================--> 
         
         
-        <div class="tracker-summary__balance">
-          <h3 class="tracker-summary__label">Saldo Saat Ini</h3>
-          <p id="balance-amount" class="tracker-summary__balance-amount">Rp 0</p>
+        <div class="summary-balance">
+          <h3 class="summary-label">Saldo Saat Ini</h3>
+          <p id="balance-amount" class="summary-balance-amount">Rp 0</p>
         </div>
 
-        <div class="tracker-summary__stat">
-          <h3 class="tracker-summary__label">Pemasukan</h3>
-          <p id="balance-amount-income" class="tracker-summary__stat-amount tracker-summary__stat-amount--income">Rp 0</p>
+        <div class="summary-stat">
+          <h3 class="summary-label">Pemasukan</h3>
+          <p id="balance-amount-income" class="summary-stat-amount summary-stat-amount--income">Rp 0</p>
         </div>
 
-        <div class="tracker-summary__stat">
-          <h3 class="tracker-summary__label">Pengeluaran</h3>
-          <p id="balance-amount-expense" class="tracker-summary__stat-amount tracker-summary__stat-amount--expense">Rp 0</p>
+        <div class="summary-stat">
+          <h3 class="summary-label">Pengeluaran</h3>
+          <p id="balance-amount-expense" class="summary-stat-amount summary-stat-amount--expense">Rp 0</p>
         </div>
       </section>
 
       <!--TRACKER FORM-->
-      <section class="tracker-form-section" aria-labelledby="form-heading">
-        <div class="tracker-form-section__card">
-          <h2 id="form-heading" class="tracker-form-section__heading">Tambah Pencatatan Baru</h2>
+      <section class="form-section" aria-labelledby="form-heading">
+        <div class="form-section-card">
+          <h2 id="form-heading" class="form-section-heading">Tambah Pencatatan Baru</h2>
 
-          <form id="transactionForm" class="tracker-form">
+          <form id="transactionForm" class="form">
             <!--Input Keterangan transaksi  -->
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormTitleInput">Keterangan</label>
-              <input type="text" id="transactionFormTitleInput" class="tracker-form__input" placeholder="Misal: Makan siang...">
+            <div class="form-field">
+              <label class="form-label" for="transactionFormTitleInput">Keterangan</label>
+              <input type="text" id="transactionFormTitleInput" class="form-input" placeholder="Misal: Makan siang...">
             </div>
             <!--Input jumlah(Rp) transaksi  -->
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormAmountInput">Nominal (Rp)</label>
-              <input type="number" id="transactionFormAmountInput" class="tracker-form__input" placeholder="50000">
+            <div class="form-field">
+              <label class="form-label" for="transactionFormAmountInput">Nominal (Rp)</label>
+              <input type="number" id="transactionFormAmountInput" class="form-input" placeholder="50000">
             </div>
             <!--Input tanggal transaksi  -->
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormDateInput">Tanggal</label>
-              <input type="date" id="transactionFormDateInput" class="tracker-form__input">
+            <div class="form-field">
+              <label class="form-label" for="transactionFormDateInput">Tanggal</label>
+              <input type="date" id="transactionFormDateInput" class="form-input">
             </div>
             <!--Input jenis transaksi  -->
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormTypeSelect">Klasifikasi</label>
-              <select id="transactionFormTypeSelect" class="tracker-form__input">
+            <div class="form-field">
+              <label class="form-label" for="transactionFormTypeSelect">Klasifikasi</label>
+              <select id="transactionFormTypeSelect" class="form-input">
                 <option value="income">Uang Masuk (+)</option>
                 <option value="expense">Uang Keluar (-)</option>
               </select>
             </div>
             <!--Buton submit-->
-            <button type="submit" class="tracker-form__submit">Simpan</button>
+            <button type="submit" class="form-submit">Simpan</button>
           </form>
         </div>
       </section>
 
       <!--TRACKER HISTORY-->
-      <section class="tracker-history" aria-labelledby="history-heading">
+      <section class="history" aria-labelledby="history-heading">
         <h2 id="history-heading" class="visually-hidden">Riwayat Transaksi</h2>
 
-        <div class="tracker-search">
-          <form id="searchTransactionForm" class="tracker-search__form" role="search">
-            <input type="search" id="searchTransactionFormTitleInput" class="tracker-form__input" placeholder="Cari transaksi berdasarkan judul..." aria-label="Kata kunci pencarian transaksi">
-            <button type="submit" class="tracker-search__submit" aria-label="Mulai Pencarian">Cari</button>
+        <div class="search">
+          <form id="searchTransactionForm" class="search-form" role="search">
+            <input type="search" id="searchTransactionFormTitleInput" class="form-input" placeholder="Cari transaksi berdasarkan judul..." aria-label="Kata kunci pencarian transaksi">
+            <button type="submit" class="search-submit" aria-label="Mulai Pencarian">Cari</button>
           </form>
         </div>
 
-        <div class="tracker-history__grid">
-          <div class="tracker-transaction-list">
-            <div class="tracker-transaction-list__header">
-              <h3 class="tracker-transaction-list__title">Arus Pemasukan</h3>
+        <div class="history-grid">
+          <div class="transaction-list">
+            <div class="transaction-list-header">
+              <h3 class="transaction-list-title">Arus Pemasukan</h3>
             </div>
             <!-- Jangan ubah atau hapus atribut data-testid pada elemen berikut -->
-            <div id="incomeList" class="tracker-transaction-list__container">
+            <div id="incomeList" class="transaction-list-container">
               <!-- ... -->
             </div>
           </div>
 
-          <div class="tracker-transaction-list">
-            <div class="tracker-transaction-list__header">
-              <h3 class="tracker-transaction-list__title">Arus Pengeluaran</h3>
+          <div class="transaction-list">
+            <div class="transaction-list-header">
+              <h3 class="transaction-list-title">Arus Pengeluaran</h3>
             </div>
-            <div id="expenseList" class="tracker-transaction-list__container">
+            <div id="expenseList" class="transaction-list-container">
               <!-- ... -->
             </div>
           </div>
@@ -115,7 +115,7 @@
 
     </main>
 
-    <footer class="tracker-footer">
+    <footer class="footer">
       <p>&#169; 2026 Tracker.io</p>
     </footer>
 

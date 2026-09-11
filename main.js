@@ -43,55 +43,55 @@ function makeTransaction(transactionObject) {
   const itemAmount = document.createElement('p')
   itemAmount.innerText = `Nominal: Rp ${amount}`
   itemAmount.setAttribute('data-testid', `transactionItemAmount`)
-  itemAmount.classList.add('tracker-transaction-item__amount')
+  itemAmount.classList.add('transaction-item-amount')
 
   const itemDate = document.createElement('p')
   itemDate.innerText = `Tanggal: ${date}`
   itemDate.setAttribute('data-testid', `transactionItemDate`)
-  itemDate.classList.add('tracker-transaction-item__date')
+  itemDate.classList.add('transaction-item-date')
 
   const itemType = document.createElement('p')
   itemType.innerText = `Tipe: ${type}`
   itemType.setAttribute('data-testid', `transactionItemType`)
-  itemType.classList.add('tracker-transaction-item__')  //.....
+  itemType.classList.add('transaction-item-')  //.....
 
 
   const changeButton = document.createElement('button')
   changeButton.setAttribute('data-testid', `transactionItemEditTypeButton`)
-  changeButton.classList.add('tracker-transaction-item__change-button', 'tracker-transaction-item__icon')
+  changeButton.classList.add('transaction-item-change-button', 'transaction-item-icon')
   changeButton.addEventListener('click', function () {
     changeTransaction(id)
   })
 
   const deleteButton = document.createElement('button')
   deleteButton.setAttribute('data-testid', `transactionItemDeleteButton`)
-  deleteButton.classList.add('tracker-transaction-item__delete-button', 'tracker-transaction-item__icon')
+  deleteButton.classList.add('transaction-item-delete-button', 'transaction-item-icon')
   deleteButton.addEventListener('click', function () {
     deleteTransaction(id)
   })
 
   const editButton = document.createElement('button')
-  editButton.classList.add('tracker-transaction-item__icon', 'tracker-transaction-item__edit-button')
+  editButton.classList.add('transaction-item-icon', 'transaction-item-edit-button')
   editButton.innerText = 'Edit'
   editButton.addEventListener('click', function () {
     editTransaction(id)
   })
 
   const containerButton = document.createElement('div')
-  containerButton.append(editButton, deleteButton, changeButton)
-  containerButton.classList.add('tracker-transaction-item__actions')
+  containerButton.append(editButton, changeButton, deleteButton)
+  containerButton.classList.add('transaction-item-actions')
   //containerButton.classList.add('containerButton')
 
   const transactionCard = document.createElement('div')
   transactionCard.setAttribute('data-testid', 'transactionItem')
-  transactionCard.classList.add('tracker-transaction-item')
+  transactionCard.classList.add('transaction-item')
   transactionCard.append(itemTitle, itemAmount, itemDate, /* itemType ,*/ containerButton)
 
   if (type === 'income') {
-    itemAmount.classList.add('tracker-transaction-item__amount--income')
+    itemAmount.classList.add('transaction-item-amount--income')
   }
   else if (type === 'expense') {
-    itemAmount.classList.add('tracker-transaction-item__amount--expense')
+    itemAmount.classList.add('transaction-item-amount--expense')
   }
   return transactionCard
 }
