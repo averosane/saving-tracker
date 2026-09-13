@@ -9,28 +9,47 @@ function createID() {
 function renderTransactions() {
   const incomeList = document.getElementById('incomeList')
   const expenseList = document.getElementById('expenseList')
-
   incomeList.innerHTML = ''
   expenseList.innerHTML = ''
 
+  const incomeState = document.getElementById('balance-amount-income')
+  const expenseState = document.getElementById('balance-amount-expense')
+  const balanceState = document.getElementById('balance-amount')
+
   for (const transactionObject of transactions) {
     const transactionCard = makeTransaction(transactionObject)  //transactionCard => element container yg memuat 1 transaksi
+    
     if (transactionObject.type === 'income') {
       incomeList.append(transactionCard)
     }
     else if (transactionObject.type === 'expense') {
       expenseList.append(transactionCard)
     }
-
-    //let incomeElement = getElementById('balance-amount-income')
-    //incomeElement.innerText = incomeSummary()
   }
 
-}
+  totalPerTipe = transactions.reduce((acc, transaction) => {
+    const type = transaction.type;
+    let amount = transaction.amount;
 
-// EDITING PROGRESS............
-function incomeSummary() {
-  return transactions.reduce((acc, obj) => acc + obj.price, 0);
+    if (!acc[type]) {acc[type] = 0;}
+    
+    acc[type] += amount;
+    
+    return acc;
+
+  }, {})
+  let incomeAmount = totalPerTipe.income
+  let expenseAmount = totalPerTipe.expense
+
+  if(incomeAmount === undefined) {incomeAmount =  0}
+  else if (expenseAmount === undefined) {expenseAmount =  0}
+
+  console.log(expenseAmount)
+
+  incomeState.innerText = `Rp. ${incomeAmount}`
+  expenseState.innerText = `Rp. ${expenseAmount}`
+  balanceState.innerText = `Rp. ${incomeAmount - expenseAmount}`
+
 }
 
 function makeTransaction(transactionObject) {
@@ -226,32 +245,8 @@ function findTransactionIndex(transactionID) {
 
 //FUNGSI search Transaction(title) {}
 function setSummaryTransaction() {
-  const totalHarga = transactions.reduce((total, item) => total + item.amount, 0);
-  const balanceState = document.getElementById('balance-amount')
-  balanceState.innerText = totalHarga
-
-  const incomeState = document.getElementById('balance-amount-income')
-
-  const expenseState = document.getElementById('balance-amount-expense')
-
+  
 }
-
-
-/*
-function amountIncome(transactionID) {
-  const transactionTarget = findTransaction(transactionID)
-  if (transactionTarget == null) return;
-
-  if (transactionTarget.type === 'income') {
-
-  }
-  else if (transactionTarget.type === 'expense') {
-
-  }
-  saveData();
-  renderTransactions()
-}
-
 
 
 // TODO [Basic] Buat variabel array untuk menyimpan semua data transaksi, contoh: let transactions = []
