@@ -259,6 +259,7 @@ body {
 }
 
 .search {
+  display: none ;
   padding: 1.25rem 1.5rem;
 }
 

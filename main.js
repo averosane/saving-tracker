@@ -28,6 +28,7 @@ function renderTransactions() {
 
 }
 
+// EDITING PROGRESS............
 function incomeSummary() {
   return transactions.reduce((acc, obj) => acc + obj.price, 0);
 }
