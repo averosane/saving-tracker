@@ -41,8 +41,9 @@ function renderTransactions() {
   let incomeAmount = totalPerTipe.income
   let expenseAmount = totalPerTipe.expense
 
+  //console.log(expenseAmount)
   if(incomeAmount === undefined) {incomeAmount =  0}
-  else if (expenseAmount === undefined) {expenseAmount =  0}
+  if (expenseAmount === undefined) {expenseAmount =  0}
 
   console.log(expenseAmount)
 
