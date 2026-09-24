@@ -1,6 +1,11 @@
 let transactions = []
 const storageKey = 'DATA_object'
 
+const formTitle = document.getElementById('transactionFormTitleInput')
+const formAmount = document.getElementById('transactionFormAmountInput')
+const formDate = document.getElementById('transactionFormDateInput')
+const formType = document.getElementById('transactionFormTypeSelect')
+
 function createID() {
   return +new Date()
 }
@@ -126,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
   submitForm.addEventListener('submit', function (event) {
     event.preventDefault()
     addTransaction()
+    clearForm()
   })
 
   renderTransactions()
@@ -142,10 +148,10 @@ function getTransactionFromStorage(storageKey) {
 
 function addTransaction() {
   const generatedID = createID()
-  const inputTitle = document.getElementById('transactionFormTitleInput').value
-  const inputAmount = parseInt(document.getElementById('transactionFormAmountInput').value)
-  const inputDate = document.getElementById('transactionFormDateInput').value
-  const inputType = document.getElementById('transactionFormTypeSelect').value
+  const inputTitle = formTitle.value
+  const inputAmount = parseInt(formAmount.value)
+  const inputDate = formDate.value
+  const inputType = formType.value
 
   if (!inputTitle) {
     return alert('Kamu belum menambahkan Judul Transaksi!! \nSilahkan tambahkan!')
@@ -210,15 +216,15 @@ function editTransaction(transactionID) {
   let { id, title, amount, date, type } = transactionTarget
 
   //menampilkan data ke form
-  let showTitle = document.getElementById('transactionFormTitleInput')
-  let showAmount = document.getElementById('transactionFormAmountInput')
-  let showDate = document.getElementById('transactionFormDateInput')
-  let showType = document.getElementById('transactionFormTypeSelect')
+  //let showTitle = document.getElementById('transactionFormTitleInput')
+  //let showAmount = document.getElementById('transactionFormAmountInput')
+  //let showDate = document.getElementById('transactionFormDateInput')
+  //let showType = document.getElementById('transactionFormTypeSelect')
 
-  showTitle.value = title
-  showAmount.value = amount
-  showDate.value = date
-  showType.value = type
+  formTitle.value = title
+  formAmount.value = amount
+  formDate.value = date
+  formType.value = type
 
   renderTransactions()
 }
@@ -241,6 +247,14 @@ function findTransactionIndex(transactionID) {
     }
   }
   return -1;
+}
+
+//FUNGSI 
+function clearForm() {
+  formTitle.value = ''
+  formAmount.value = ''
+  formDate.value = ''
+  formType.value = ''
 }
 
 
