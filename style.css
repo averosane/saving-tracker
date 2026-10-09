@@ -168,6 +168,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.05em;
   margin-top: auto;
+  margin-left: 0.5rem;
 }
 
 .summary-stat-amount {
@@ -175,6 +176,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.04em;
   margin-top: auto;
+  margin-left: 0.5rem;
 }
 
 .summary-stat-amount--income { color: var(--color-income); }

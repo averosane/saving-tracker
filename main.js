@@ -46,16 +46,17 @@ function renderTransactions() {
   let incomeAmount = totalPerTipe.income
   let expenseAmount = totalPerTipe.expense
 
-  //console.log(expenseAmount)
   if(incomeAmount === undefined) {incomeAmount =  0}
-  if (expenseAmount === undefined) {expenseAmount =  0}
+  if(expenseAmount === undefined) {expenseAmount =  0}
 
-  console.log(expenseAmount)
+  incomeState.innerHTML = incomeAmount.toLocaleString('id-ID')
+  expenseState.innerHTML = expenseAmount.toLocaleString('id-ID')
+  balanceState.innerHTML = (incomeAmount - expenseAmount).toLocaleString('id-ID')
 
-  incomeState.innerText = `Rp. ${incomeAmount}`
-  expenseState.innerText = `Rp. ${expenseAmount}`
-  balanceState.innerText = `Rp. ${incomeAmount - expenseAmount}`
+}
 
+function toCurrency(nominal){
+  return nominal.toLocaleString('id-ID')
 }
 
 function makeTransaction(transactionObject) {
@@ -67,7 +68,7 @@ function makeTransaction(transactionObject) {
   itemTitle.setAttribute('data-testid', `transactionItemTitle`)
 
   const itemAmount = document.createElement('p')
-  itemAmount.innerText = `Nominal: Rp ${amount}`
+  itemAmount.innerText = `Rp ${amount.toLocaleString('id-ID')}`
   itemAmount.setAttribute('data-testid', `transactionItemAmount`)
   itemAmount.classList.add('transaction-item-amount')
 
