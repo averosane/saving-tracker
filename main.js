@@ -216,12 +216,6 @@ function editTransaction(transactionID) {
 
   let { id, title, amount, date, type } = transactionTarget
 
-  //menampilkan data ke form
-  //let showTitle = document.getElementById('transactionFormTitleInput')
-  //let showAmount = document.getElementById('transactionFormAmountInput')
-  //let showDate = document.getElementById('transactionFormDateInput')
-  //let showType = document.getElementById('transactionFormTypeSelect')
-
   formTitle.value = title
   formAmount.value = amount
   formDate.value = date
