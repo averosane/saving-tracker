@@ -194,6 +194,52 @@ function deleteTransaction(transactionID) {
   renderTransactions()
 }
 
+//reset every month
+function jalankanSetiapBulan(fungsiTugas, tanggalTarget = 1) {
+        function jadwalkanBerikutnya() {
+            const sekarang = new Date();
+            let target = new Date(sekarang.getFullYear(), sekarang.getMonth(), tanggalTarget, 0, 0, 0, 0);
+            
+            console.log(sekarang)
+            console.log(sekarang.toString())
+            console.log(target)
+            console.log(target.toString())
+            
+            // Jika tanggal target di bulan ini sudah lewat, jadwalkan untuk bulan depan
+            if (sekarang >= target) {
+                target.setMonth(target.getMonth() + 1);
+            }
+    
+            const jedaWaktu = target.getTime() - sekarang.getTime();
+    
+            console.log(`Tugas dijadwalkan selanjutnya pada: ${target.toString()}`);
+    
+            // Set timer untuk mengeksekusi fungsi
+            setTimeout(() => {
+                try {
+                    fungsiTugas(); // Jalankan fungsi utama Anda
+                } catch (error) {
+                    console.error("Terjadi kesalahan saat menjalankan tugas:", error);
+                }
+                jadwalkanBerikutnya(); // Rekursi untuk menjadwalkan bulan berikutnya
+            }, jedaWaktu);
+        }
+    
+        jadwalkanBerikutnya();
+    }
+    
+    // ==========================================
+    // CONTOH PENGGUNAAN:
+    // ==========================================
+    
+    function tugasSaya() {
+        console.log("Hore! Fungsi berjalan di awal bulan!");
+    }
+    
+    // Jalankan otomatis setiap tanggal 1
+    jalankanSetiapBulan(tugasSaya, 1);
+    
+
 // FUNGSI ubah type transaksi
 function changeTransaction(transactionID) {
   const transactionTarget = findTransaction(transactionID)
