@@ -68,7 +68,7 @@ function makeTransaction(transactionObject) {
   itemTitle.setAttribute('data-testid', `transactionItemTitle`)
 
   const itemAmount = document.createElement('p')
-  itemAmount.innerText = `Rp ${amount.toLocaleString('id-ID')}`
+  itemAmount.innerText = `${amount.toLocaleString('id-ID')}`
   itemAmount.setAttribute('data-testid', `transactionItemAmount`)
   itemAmount.classList.add('transaction-item-amount')
 
