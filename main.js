@@ -23,7 +23,7 @@ function renderTransactions() {
 
   for (const transactionObject of transactions) {
     const transactionCard = makeTransaction(transactionObject)  //transactionCard => element container yg memuat 1 transaksi
-    
+
     if (transactionObject.type === 'income') {
       incomeList.append(transactionCard)
     }
@@ -36,18 +36,18 @@ function renderTransactions() {
     const type = transaction.type;
     let amount = transaction.amount;
 
-    if (!acc[type]) {acc[type] = 0;}
-    
+    if (!acc[type]) { acc[type] = 0; }
+
     acc[type] += amount;
-    
+
     return acc;
 
   }, {})
   let incomeAmount = totalPerTipe.income
   let expenseAmount = totalPerTipe.expense
 
-  if(incomeAmount === undefined) {incomeAmount =  0}
-  if(expenseAmount === undefined) {expenseAmount =  0}
+  if (incomeAmount === undefined) { incomeAmount = 0 }
+  if (expenseAmount === undefined) { expenseAmount = 0 }
 
   incomeState.innerHTML = incomeAmount.toLocaleString('id-ID')
   expenseState.innerHTML = expenseAmount.toLocaleString('id-ID')
@@ -55,7 +55,7 @@ function renderTransactions() {
 
 }
 
-function toCurrency(nominal){
+function toCurrency(nominal) {
   return nominal.toLocaleString('id-ID')
 }
 
@@ -155,15 +155,13 @@ function addTransaction() {
   const inputType = formType.value
 
   if (!inputTitle) {
-    return alert('Kamu belum menambahkan Judul Transaksi!! \nSilahkan tambahkan!')
+    return alert('Anda belum menambahkan Judul Transaksi!!')
   } else if (inputAmount < 1) {
     return alert(`Nominal transaksi TDK BOLEH KURANG dari 1!`)
   }
 
   const transactionObject = generateTransaction(generatedID, inputTitle, inputAmount, inputDate, inputType)
   transactions.push(transactionObject)
-
-  console.log(typeof (inputAmount))
 
   renderTransactions()
   saveData()
@@ -195,50 +193,46 @@ function deleteTransaction(transactionID) {
 }
 
 //reset every month
-function jalankanSetiapBulan(fungsiTugas, tanggalTarget = 1) {
-        function jadwalkanBerikutnya() {
-            const sekarang = new Date();
-            let target = new Date(sekarang.getFullYear(), sekarang.getMonth(), tanggalTarget, 0, 0, 0, 0);
-            
-            console.log(sekarang)
-            console.log(sekarang.toString())
-            console.log(target)
-            console.log(target.toString())
-            
-            // Jika tanggal target di bulan ini sudah lewat, jadwalkan untuk bulan depan
-            if (sekarang >= target) {
-                target.setMonth(target.getMonth() + 1);
-            }
-    
-            const jedaWaktu = target.getTime() - sekarang.getTime();
-    
-            console.log(`Tugas dijadwalkan selanjutnya pada: ${target.toString()}`);
-    
-            // Set timer untuk mengeksekusi fungsi
-            setTimeout(() => {
-                try {
-                    fungsiTugas(); // Jalankan fungsi utama Anda
-                } catch (error) {
-                    console.error("Terjadi kesalahan saat menjalankan tugas:", error);
-                }
-                jadwalkanBerikutnya(); // Rekursi untuk menjadwalkan bulan berikutnya
-            }, jedaWaktu);
-        }
-    
-        jadwalkanBerikutnya();
+function resetMonthly(dayTarget = 1) {
+  function jadwalkanBerikutnya() {
+    const now = new Date();
+    let targetTime = new Date(now.getFullYear(), now.getMonth(), dayTarget, 0, 0, 0, 0);
+
+    //console.log('now :',now)//
+    //console.log('targetTime :',targetTime)//
+
+    if (now >= targetTime) {
+      targetTime.setMonth(targetTime.getMonth() + 1);
+
+      //console.log('targetTime.getMonth :',targetTime.getMonth())//
+      //console.log('tergetTime.toString :',targetTime.toString())//
     }
-    
-    // ==========================================
-    // CONTOH PENGGUNAAN:
-    // ==========================================
-    
-    function tugasSaya() {
-        console.log("Hore! Fungsi berjalan di awal bulan!");
-    }
-    
-    // Jalankan otomatis setiap tanggal 1
-    jalankanSetiapBulan(tugasSaya, 1);
-    
+
+    console.log(`reset dijadwalkan lagi pada: ${targetTime.toString()}`);
+
+    const timer = targetTime.getTime() - now.getTime();
+    console.log('timer :', timer)
+
+    setTimeout(() => {
+      try {
+        transactions = []
+      } catch (error) {
+        console.error("Terjadi kesalahan saat menjalankan tugas:", error);
+      }
+      jadwalkanBerikutnya(); // Rekursi untuk menjadwalkan bulan berikutnya
+    }, timer);
+  }
+
+  jadwalkanBerikutnya();
+}
+
+// ==========================================
+// CONTOH PENGGUNAAN:
+// ==========================================
+
+// Jalankan otomatis setiap tanggal 1
+resetMonthly();
+
 
 // FUNGSI ubah type transaksi
 function changeTransaction(transactionID) {
@@ -290,7 +284,6 @@ function findTransactionIndex(transactionID) {
   return -1;
 }
 
-//FUNGSI 
 function clearForm() {
   formTitle.value = ''
   formAmount.value = ''
@@ -298,10 +291,9 @@ function clearForm() {
   formType.value = ''
 }
 
-
 //FUNGSI search Transaction(title) {}
 function setSummaryTransaction() {
-  
+
 }
 
 

@@ -13,8 +13,9 @@
   --text-muted: #71717A;
 
   --accent-blue: #2563EB;
-  --accent-light: #72B0FF;
+  --accent-light: rgb(199, 222, 255);
 
+  --color-balance-:#F6F7F9;
   --color-income: #10B981;
   --bg-income: #ECFDF5;
   --color-expense: #F43F5E;
@@ -71,10 +72,15 @@ body {
   gap: 1.75rem;
 }
 
+main section{
+  position: relative;
+}
+
 /* Kartu dasar yang dipakai bersama di semua section */
 .summary-balance,
 .summary-stat,
 .form-section-card,
+/* .search-form-section, */
 .search,
 .transaction-list {
   background: var(--bg-card);
@@ -154,11 +160,23 @@ body {
 .form-section-heading,
 .transaction-list-title {
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
+}
+
+.summary-balance{
+  background: linear-gradient(-5deg, var(--bg-card) 0%, var(--accent-light) 130%);
+  /* background-color: rgb(199, 222, 255); */
+}
+
+.summary-balance,
+.summary-stat{
+  color: var(--text-muted);
+  font-weight: 100;
+  justify-content:space-between;
 }
 
 .balance-label{
@@ -166,16 +184,17 @@ body {
 }
 
 .summary-balance-amount {
+  color: var(--accent-blue);
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.05em;
   margin-top: auto;
   margin-left: 0.5rem;
-  font-size: 2.25rem;
   word-break: break-all;
 }
 
 .summary-stat-amount {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   margin-top: auto;
@@ -188,8 +207,30 @@ body {
 /* =========================================================
    TRACKER FORM — INPUT TRANSAKSI BARU
    ========================================================= */
+
+.show-form-section{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.show-form{  width: 32rem;}
+
 .form-section-card {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-card-floating{
+  display: flex;
+  position:absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  z-index: 1000;
+}
+
+.form-card-hidden{
+  display: none;
 }
 
 .form-section-heading {
@@ -232,7 +273,8 @@ body {
   background: var(--bg-card);
 }
 
-.form-submit {
+.form-submit,
+.show-form {
   background: var(--text-dark);
   color: #fff;
   border: none;
@@ -392,7 +434,7 @@ body {
   position: absolute;
   top: 0; right: 0;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -402,6 +444,7 @@ body {
   width: 0;  height: 0;
   padding: 1rem 2rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.3); 
 }
 
 .transaction-item-change-button{
@@ -419,7 +462,6 @@ body {
   background-color: white;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
   width: 35px;  height: 35px;
   cursor: pointer;
   border: none; 
@@ -452,9 +494,7 @@ body {
   }
 
   .summary-balance {
-    background: linear-gradient(0deg, var(--bg-card) 0%, var(--accent-light) 150%);
     grid-column: span 2;
-    
   }
 
   .form {
@@ -494,8 +534,6 @@ body {
     padding: 1.25rem;
   }
 
-  .summary-stat-amount { font-size: 1.75rem; }
-
   .form-section-card { padding: 1.25rem; }
 
   .form {
@@ -506,6 +544,7 @@ body {
   }
 
   .form-submit { width: 100%; margin-top: 0.5rem; }
+  .show-form{  width: 12rem;}
 
   .history-grid {
     grid-template-columns: 1fr;

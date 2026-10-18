@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>month Reset</title>
+</head>
+<body>
+  
+  <script>
+    const data= ['a', 'b', 'c']
+    document.querySelector('body').innerText = data
+    //data.slice(0,0)
+    document.querySelector('body').innerText = data
+
+    const now = new Date();
+    const targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() +1, 0, 0)
+    
+    /* for(let i= 0; i<9; i++){
+      
+    } */
+    console.log(now)
+    console.log(targetTime)
+    
+
+    if(now === targetTime) {
+      console.log('result: hello world')
+      //slice(0, 0)
+    }
+  </script>
+</body>
+</html>

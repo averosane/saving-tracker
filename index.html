@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cash Note</title>
-  <link rel="manifest" href="/manifest.json">
+  <!-- <link rel="manifest" href="/manifest.json"> -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="app">
 
@@ -22,10 +24,42 @@
     </header>
 
     <main>
+      <div class="form-section-card form-card-hidden">
+        <h2 id="form-heading" class="form-section-heading">Tambah Pencatatan Baru</h2>
+
+        <form id="transactionForm" class="form">
+
+          <div class="form-field">
+            <label class="form-label" for="transactionFormTitleInput">Keterangan</label>
+            <input type="text" id="transactionFormTitleInput" class="form-input" placeholder="Misal: Makan siang...">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="transactionFormAmountInput">Nominal (Rp)</label>
+            <input type="number" id="transactionFormAmountInput" class="form-input" placeholder="50000">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="transactionFormDateInput">Tanggal</label>
+            <input type="date" id="transactionFormDateInput" class="form-input">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="transactionFormTypeSelect">Klasifikasi</label>
+            <select id="transactionFormTypeSelect" class="form-input">
+              <option value="income">Uang Masuk (+)</option>
+              <option value="expense">Uang Keluar (-)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="form-submit">Simpan</button>
+        </form>
+      </div>
+
       <!--TRACKER SUMMARY-->
       <section class="summary" aria-labelledby="summary-heading">
         <h2 id="summary-heading" class="visually-hidden">Ringkasan Keuangan</h2>
-        
+
         <div class="summary-balance">
           <h3 class="summary-label balance-label">Saldo Saat Ini</h3>
           <p>
@@ -38,7 +72,7 @@
           <h3 class="summary-label">Pemasukan</h3>
           <p>
             Rp.
-             <span id="balance-amount-income" class="summary-stat-amount summary-stat-amount--income">Rp</span>
+            <span id="balance-amount-income" class="summary-stat-amount summary-stat-amount--income"></span>
           </p>
         </div>
 
@@ -46,43 +80,15 @@
           <h3 class="summary-label">Pengeluaran</h3>
           <p>
             Rp.
-            <span id="balance-amount-expense" class="summary-stat-amount summary-stat-amount--expense">Rp</span>
+            <span id="balance-amount-expense" class="summary-stat-amount summary-stat-amount--expense"></span>
           </p>
         </div>
       </section>
 
       <!--TRACKER FORM-->
       <section class="form-section" aria-labelledby="form-heading">
-        <div class="form-section-card">
-          <h2 id="form-heading" class="form-section-heading">Tambah Pencatatan Baru</h2>
-
-          <form id="transactionForm" class="form">
-            <!--Input Keterangan transaksi  -->
-            <div class="form-field">
-              <label class="form-label" for="transactionFormTitleInput">Keterangan</label>
-              <input type="text" id="transactionFormTitleInput" class="form-input" placeholder="Misal: Makan siang...">
-            </div>
-            <!--Input jumlah(Rp) transaksi  -->
-            <div class="form-field">
-              <label class="form-label" for="transactionFormAmountInput">Nominal (Rp)</label>
-              <input type="number" id="transactionFormAmountInput" class="form-input" placeholder="50000">
-            </div>
-            <!--Input tanggal transaksi  -->
-            <div class="form-field">
-              <label class="form-label" for="transactionFormDateInput">Tanggal</label>
-              <input type="date" id="transactionFormDateInput" class="form-input">
-            </div>
-            <!--Input jenis transaksi  -->
-            <div class="form-field">
-              <label class="form-label" for="transactionFormTypeSelect">Klasifikasi</label>
-              <select id="transactionFormTypeSelect" class="form-input">
-                <option value="income">Uang Masuk (+)</option>
-                <option value="expense">Uang Keluar (-)</option>
-              </select>
-            </div>
-            <!--Buton submit-->
-            <button type="submit" class="form-submit">Simpan</button>
-          </form>
+        <div class="show-form-section">
+          <button class="show-form">Add Transaction</button>
         </div>
       </section>
 
@@ -92,7 +98,8 @@
 
         <div class="search">
           <form id="searchTransactionForm" class="search-form" role="search">
-            <input type="search" id="searchTransactionFormTitleInput" class="form-input" placeholder="Cari transaksi berdasarkan judul..." aria-label="Kata kunci pencarian transaksi">
+            <input type="search" id="searchTransactionFormTitleInput" class="form-input"
+              placeholder="Cari transaksi berdasarkan judul..." aria-label="Kata kunci pencarian transaksi">
             <button type="submit" class="search-submit" aria-label="Mulai Pencarian">Cari</button>
           </form>
         </div>
@@ -102,7 +109,7 @@
             <div class="transaction-list-header">
               <h3 class="transaction-list-title">Arus Pemasukan</h3>
             </div>
-            
+
             <div id="incomeList" class="transaction-list-container">
               <!-- ... -->
             </div>
@@ -129,4 +136,5 @@
 
   <script src="main.js"></script>
 </body>
+
 </html>
