@@ -150,13 +150,15 @@ body {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.summary-label {
+.summary-label,
+.form-section-heading,
+.transaction-list-title {
   font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .balance-label{
@@ -191,11 +193,6 @@ body {
 }
 
 .form-section-heading {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
   margin-bottom: 1rem;
 }
 
@@ -304,13 +301,13 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.transaction-list-title {
+/* .transaction-list-title {
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.05em;
-}
+} */
 
 .transaction-list-container {
   display: flex;
@@ -401,7 +398,7 @@ body {
 }
 
 .transaction-item-edit-button{
-  display: ;
+  display: flex;
   width: 0;  height: 0;
   padding: 1rem 2rem;
   font-size: 1rem;
