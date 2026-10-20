@@ -138,6 +138,11 @@ document.addEventListener('DOMContentLoaded', function () {
   renderTransactions()
 })
 
+const addForm = document.getElementsByClassName('show-form')
+addForm.addEventListener('click', function () {
+  if
+})
+
 function getTransactionFromStorage(storageKey) {
   let data = JSON.parse(localStorage.getItem(storageKey))
   if (data !== null) {
@@ -292,9 +297,7 @@ function clearForm() {
 }
 
 //FUNGSI search Transaction(title) {}
-function setSummaryTransaction() {
 
-}
 
 
 // TODO [Basic] Buat variabel array untuk menyimpan semua data transaksi, contoh: let transactions = []
